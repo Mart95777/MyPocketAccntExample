@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyCurrencyPocketbook.Models.PocketAccount>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PocketAccountNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.PocketAccountNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Balance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "DetailsForAdmin", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+    }
+</table>
+

@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1>MY CURRENCY POCKETBOOK</h1>
+    <p class="lead">You can add a note to your account here.</p>
+</div>
+
+@*
+    <div id="formSection">
+        <h3>@ViewBag.AddAccountNoteMessage</h3>
+        @using (Ajax.BeginForm(new AjaxOptions
+        {
+            HttpMethod = "post",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "formSection"
+        }))
+        {
+            <textarea name="accountnote"></textarea>
+            <input type="submit" value="Add" />
+        }
+    </div>
+
+     @section scripts{
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    }
+
+*@
+
+<div id="formSection">
+    <h3>@ViewBag.AddAccountNoteMessage</h3>
+    <form method="post" id="formNote">
+        <textarea name="accountnote" id="message"></textarea>
+        <input type="submit" value="Add" />
+    </form>
+</div>
+
+@section scripts
+{
+    <script>
+        $('#formNote').submit(function () {
+            $.post('', { message: $('#message').val() }).
+                done(function (response) {
+                    $('#formSection').html(response);
+                })
+            return false;
+        })
+    </script>
+}
+
+@*
+    <h3>@ViewBag.AddAccountNoteMessage</h3>
+    <form method="post">
+        <textarea name="accountnote"></textarea>
+        <input type="submit" value="Add" />
+    </form>
+
+*@
+
+
+
+
